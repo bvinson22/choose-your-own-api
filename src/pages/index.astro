@@ -20,13 +20,14 @@ const data = await res.json();
 
 		<!-- Normalize CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+		<link href="https://api.fontshare.com/v2/css?f[]=supreme@300,500,800&display=swap" rel="stylesheet"> 
 
 		<title>Retreive and and display external API data with Astro</title>
 	</head>
 	<body>
 		
 		<header class="masthead">
-			<h1 class="site-title">Gallery</h1>
+			<h1 class="site-title">Disney Characters</h1>
 		</header>
 
 		<main id="content" class="main-area">
@@ -35,23 +36,26 @@ const data = await res.json();
 		  
 				<!-- Your API Data -->
 				{
-					data.map( item =>
-					<li class="card-item">
-						<a href="#">
-							<figure class="card">
-							<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="Placeholder">
-							<figcaption class="caption">
-								<h3 class="caption-title">{item.name}</h3>
-								<p>{item.company.catchPhrase}</p>
-							</figcaption>
-							</figure>
-						</a>
-					</li> 
-					)
-				}
-		  
-			</ul>
-		  </main>
+					<main class="wrapper">
+  <nav class="grid">
+    <ul class="character-list">
+      <!-- Cards load here -->
+    </ul>
+  </nav>
+  
+  <!-- Spinner -->
+<div class="spinner">
+  <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." width="80">
+</div>
+
+<!-- Load More Button -->
+<div class="load-more-container">
+  <button id="load-more" class="load-more-btn">
+    Load More Characters
+  </button>
+</div>
+
+</main>
 		  
 
 

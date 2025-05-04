@@ -1,93 +1,158 @@
 /* Normalize CSS */
 
-/* Header */
-.masthead {
-    text-align: center;
-    border-bottom: 1px solid hsl(0, 0%, 90%);
-}
-
-/* Header */
-img {
-    display: block;
-    border: 0;
-    width: 100%;
-    height: auto;
+:root {
+    --color-bg: hsl(287, 60%, 94%);
+    --color-accent: hsl(39, 88%, 71%);
+    --color-card: hsl(289, 92%, 85%);
+    --color-shadow: hsl(281, 50%, 64%);
+    --color-overlay: hsl(287, 37%, 45%);
+    --color-text-light: hsl(287, 60%, 94%);
   }
-    
-.cards {
-margin: 0;
-padding: 0;
-list-style-type: none;
-}
-
-.cards a {
-display: block;
-margin-bottom: 1em;
-text-decoration: none;
-}
-
-.caption {
-padding: 1em;
-background: hsla(246, 40%, 30%, 0.6);
-color: white;
-font-size: 1.2em;
-transition: all 0.4s;
-}
-
-a:focus .caption,
-a:hover .caption {
-background: hsla(246, 40%, 30%, 1);
-}
-
-.caption-title {
-margin: 0;
-font-size: 1.4em;
-line-height: 1.1em;
-}
-
-/*--------------------------------------------------------------
-CSS Grid layout for wider screens, when browser supports grid:
---------------------------------------------------------------*/
-@media screen and (min-width: 30em) {
-.cards {
+  
+  
+  /* Wrapper to center content */
+  .wrapper {
+    padding: 2rem;
+    background: var(--color-bg);
+  }
+  
+  /* Grid container for the UL */
+  .character-list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-}
-
-.cards a {
-    margin-bottom: 0;
-}
-
-.card {
-    display: grid;
-}
-
-.card img,
-.caption {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.caption {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 2rem;
+  }
+  
+  /* Each character card */
+  .character-list li {
+    background: var(--color-card);
+    font-family: 'Supreme', sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--color-shadow); 
+    overflow: hidden;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .character-list li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px var(--color-shadow);
+  }
+  
+  /* Character image */
+  .character-list img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 10px solid var(--color-accent);
+    margin-bottom: 1rem;
+    z-index: 1;
+  }
+  
+  /* Character name */
+  .character-list h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  /* Overlay for hidden info */
+  .character-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; 
+    height: 100%;
+    background: var(--color-overlay);
     opacity: 0;
-
-    /* Alignment */
-    /*     align-items: flex-end; */
-    /*     justify-content: flex-end; */
-}
-
-a:focus .caption,
-a:hover .caption {
-    background: hsla(246, 40%, 30%, 0.6);
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    transition: opacity 0.4s ease;
+    border-radius: 12px 0 0 12px; 
+    z-index: 2;
+    overflow-y: auto;
+  }
+  
+  .character-list li:hover .character-details {
     opacity: 1;
-}
-}
-
-@media screen and (min-width: 60em) {
-.cards {
-    grid-template-columns: repeat(4, 1fr);
-}
-}
+  }
+  
+  /* Box for scrollable info */
+  .character-details .info-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    max-width: 90%;
+    max-height: 60%;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Info text */
+  .character-details p {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.4;
+    color: var(--color-text-light);
+  }
+  
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInMoveUp 0.6s forwards;
+  }
+  
+  /* Spinner */
+  .spinner {
+    display: none;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  /* Load More Button Container */
+  .load-more-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* Load More Button */
+  .load-more-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Supreme', sans-serif;
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .load-more-btn:hover {
+    background-color: var(--color-overlay);
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+  }
+  
