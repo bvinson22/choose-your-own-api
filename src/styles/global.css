@@ -1,0 +1,93 @@
+/* Normalize CSS */
+
+/* Header */
+.masthead {
+    text-align: center;
+    border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+
+/* Header */
+img {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+  }
+    
+.cards {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.cards a {
+display: block;
+margin-bottom: 1em;
+text-decoration: none;
+}
+
+.caption {
+padding: 1em;
+background: hsla(246, 40%, 30%, 0.6);
+color: white;
+font-size: 1.2em;
+transition: all 0.4s;
+}
+
+a:focus .caption,
+a:hover .caption {
+background: hsla(246, 40%, 30%, 1);
+}
+
+.caption-title {
+margin: 0;
+font-size: 1.4em;
+line-height: 1.1em;
+}
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+@media screen and (min-width: 30em) {
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+}
+
+.cards a {
+    margin-bottom: 0;
+}
+
+.card {
+    display: grid;
+}
+
+.card img,
+.caption {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+
+    /* Alignment */
+    /*     align-items: flex-end; */
+    /*     justify-content: flex-end; */
+}
+
+a:focus .caption,
+a:hover .caption {
+    background: hsla(246, 40%, 30%, 0.6);
+    opacity: 1;
+}
+}
+
+@media screen and (min-width: 60em) {
+.cards {
+    grid-template-columns: repeat(4, 1fr);
+}
+}
