@@ -1,158 +1,90 @@
-/* Normalize CSS */
-
 :root {
-    --color-bg: hsl(287, 60%, 94%);
-    --color-accent: hsl(39, 88%, 71%);
-    --color-card: hsl(289, 92%, 85%);
-    --color-shadow: hsl(281, 50%, 64%);
-    --color-overlay: hsl(287, 37%, 45%);
-    --color-text-light: hsl(287, 60%, 94%);
-  }
-  
-  
-  /* Wrapper to center content */
-  .wrapper {
-    padding: 2rem;
-    background: var(--color-bg);
-  }
-  
-  /* Grid container for the UL */
-  .character-list {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 2rem;
-  }
-  
-  /* Each character card */
-  .character-list li {
-    background: var(--color-card);
-    font-family: 'Supreme', sans-serif;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px var(--color-shadow); 
-    overflow: hidden;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .character-list li:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px var(--color-shadow);
-  }
-  
-  /* Character image */
-  .character-list img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 10px solid var(--color-accent);
-    margin-bottom: 1rem;
-    z-index: 1;
-  }
-  
-  /* Character name */
-  .character-list h2 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    text-align: center;
-    z-index: 1;
-  }
-  
-  /* Overlay for hidden info */
-  .character-details {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%; 
-    height: 100%;
-    background: var(--color-overlay);
-    opacity: 0;
-    padding: 1rem;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start; 
-    transition: opacity 0.4s ease;
-    border-radius: 12px 0 0 12px; 
-    z-index: 2;
-    overflow-y: auto;
-  }
-  
-  .character-list li:hover .character-details {
-    opacity: 1;
-  }
-  
-  /* Box for scrollable info */
-  .character-details .info-box {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    max-width: 90%;
-    max-height: 60%;
-    overflow-y: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Info text */
-  .character-details p {
-    margin: 0.5rem 0;
-    font-size: 0.85rem;
-    text-align: center;
-    line-height: 1.4;
-    color: var(--color-text-light);
-  }
-  
-  /* Fade-in animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInMoveUp 0.6s forwards;
-  }
-  
-  /* Spinner */
-  .spinner {
-    display: none;
-    text-align: center;
-    margin: 2rem 0;
-  }
-  
-  /* Load More Button Container */
-  .load-more-container {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  
-  /* Load More Button */
-  .load-more-btn {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Supreme', sans-serif;
-    background-color: var(--color-accent);
-    color: #fff;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .load-more-btn:hover {
-    background-color: var(--color-overlay);
-    transform: scale(1.05);
-  }
-  
-  @keyframes fadeInMoveUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-  }
-  
+  --color-bg: hsl(287, 60%, 94%);
+  --color-accent: hsl(39, 88%, 71%);
+  --color-card: hsl(289, 92%, 85%);
+  --color-shadow: hsl(281, 50%, 64%);
+  --color-overlay: hsl(287, 37%, 45%);
+  --color-text-light: hsl(287, 60%, 94%);
+}
+
+body {
+  font-family: 'Supreme', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: #333;
+}
+
+header, footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grid ul {
+  list-style: none;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.responsive-grid li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-card);
+  border: 5px groove var(--color-shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: left;
+  color: black;
+  height: 350px; 
+  box-sizing: border-box; 
+  overflow: hidden; 
+}
+
+.responsive-grid img {
+  max-width: 100%;
+  height: 150px; 
+  border-radius: 20px;
+  object-fit: cover; 
+}
+
+.responsive-grid h2, 
+.responsive-grid p {
+  margin: 0.5rem 0;
+  text-align: center;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+}
+
+.grid li:hover {
+  box-shadow: 0 0 12px var(--color-shadow);
+  animation: pulse 0.8s ease-in-out;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.grid li:hover {
+  cursor: pointer;
+}
+
+
+

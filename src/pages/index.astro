@@ -1,63 +1,49 @@
 ---
-// Import Stylesheet
 import '../styles/global.css';
 
-// data source
-// replace temporary JSON placeholder API
-const source = 'https://jsonplaceholder.typicode.com/users';
-// fetch the data
-const res = await fetch(source); 
-// store retreived data
+// Data source
+const source = 'https://api.disneyapi.dev/character?page=1';
+
+// Fetch data
+const res = await fetch(source);
 const data = await res.json();
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- Normalize CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-		<link href="https://api.fontshare.com/v2/css?f[]=supreme@300,500,800&display=swap" rel="stylesheet"> 
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=supreme@300,500,800&display=swap" rel="stylesheet"> 
 
-		<title>Retreive and and display external API data with Astro</title>
-	</head>
-	<body>
-		
-		<header class="masthead">
-			<h1 class="site-title">Disney Characters</h1>
-		</header>
+    <title>Retrieve and Display External API Data with Astro</title>
+  </head>
+  <body>
 
-		<main id="content" class="main-area">
+    <header class="masthead">
+      <h1 class="site-title">Disney Characters</h1>
+    </header>
 
-			<ul class="cards">
-		  
-				<!-- Your API Data -->
-				{
-					<main class="wrapper">
-  <nav class="grid">
-    <ul class="character-list">
-      <!-- Cards load here -->
-    </ul>
-  </nav>
-  
-  <!-- Spinner -->
-<div class="spinner">
-  <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." width="80">
-</div>
-
-<!-- Load More Button -->
-<div class="load-more-container">
-  <button id="load-more" class="load-more-btn">
-    Load More Characters
-  </button>
-</div>
-
+    
+<main id="content" class="main-area wrapper">
+  <ul class="character-list grid responsive-grid">
+    {
+      data.data.map(item => (
+        <li style="background-color: var(--color-card); border: 5px groove var(--color-shadow); border-radius: 12px; padding: 1rem; text-align: left; color: black;">
+          <img src={item.imageUrl} alt={item.name} style="max-width: 100%; border-radius: 20px;" />
+          <h2>{item.name}</h2>
+          <p><strong>Films:</strong> {item.films.length ? item.films.join(', ') : 'None'}</p>
+          <p><strong>TV Shows:</strong> {item.tvShows.length ? item.tvShows.join(', ') : 'None'}</p>
+        </li>
+      ))
+    }
+  </ul>
 </main>
-		  
+...
 
-
-	</body>
+  </body>
 </html>
