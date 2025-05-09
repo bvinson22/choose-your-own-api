@@ -8,8 +8,8 @@ const res = await fetch(source);
 const data = await res.json();
 ---
 
-
-<ul class="character-list grid responsive-grid">
+<div class="container">
+  <ul class="character-list grid responsive-grid">
 
     <!-- API Data -->
     {
@@ -23,3 +23,4 @@ const data = await res.json();
       ))
     }
   </ul>
+</div>
