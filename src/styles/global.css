@@ -11,9 +11,11 @@ body {
   font-family: 'Supreme', sans-serif;
   background: var(--color-bg);
   color: var(--color-overlay);
+  padding: 2rem;
 }
 
 header, footer {
+  font-size: 2rem;
   text-align: center;
   padding: 2rem 1rem;
   background-color: var(--color-bg);
