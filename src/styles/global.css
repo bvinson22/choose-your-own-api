@@ -17,7 +17,7 @@ body {
   font-family: 'Supreme', sans-serif;
   background: var(--color-card);
   color: var(--color-bg);
-  padding: 15rem;
+  padding: 10rem;
   margin: 0;
   box-sizing: border-box;
 }
@@ -33,19 +33,26 @@ h1, h2, h3, p {
 /*******************************
           HEADER & FOOTER
 *******************************/
+
 header, footer {
   font-size: 2rem;
   text-align: center;
   padding: 2rem 1rem;
   background-color: var(--color-overlay);
   border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1200px;
 }
 
 header {
-  position: relative;
-  background-color: var(--color-overlay);
-  color: var(--color-text-light);
+  font-size: 2rem;
+  text-align: center;
   padding: 2rem 1rem;
+  background-color: var(--color-overlay);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1200px;
+  position: relative; /* Ensure pseudo-elements are positioned relative to the header */
 }
 
 header::before,
@@ -63,6 +70,10 @@ header::before {
 header::after {
   bottom: 10px;
   right: 10px;
+}
+
+footer {
+  color: var(--color-text-light);
 }
 
 /*******************************
@@ -118,6 +129,12 @@ header::after {
   overflow: visible;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+}
+
+.responsive-grid li h2 {
+  font-size: clamp(1rem, 2.5vw, 2rem); /* Minimum 1rem, scales with viewport width, max 2rem */
+  text-align: center;
+  margin: 0.5rem 0;
 }
 
 .responsive-grid li:hover {
