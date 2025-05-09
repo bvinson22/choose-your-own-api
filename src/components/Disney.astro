@@ -1,0 +1,25 @@
+---
+
+// Data source
+const source = 'https://api.disneyapi.dev/character?page=1';
+
+// Fetch data
+const res = await fetch(source);
+const data = await res.json();
+---
+
+
+<ul class="character-list grid responsive-grid">
+
+    <!-- API Data -->
+    {
+      data.data.map(item => (
+        <li style="background-color: var(--color-card); border: 5px groove var(--color-shadow); border-radius: 12px; padding: 1rem; text-align: left; color: black;">
+          <img src={item.imageUrl} alt={item.name} style="max-width: 100%; border-radius: 20px;" />
+          <h2>{item.name}</h2>
+          <p><strong>Films:</strong> {item.films.length ? item.films.join(', ') : 'None'}</p>
+          <p><strong>TV Shows:</strong> {item.tvShows.length ? item.tvShows.join(', ') : 'None'}</p>
+        </li>
+      ))
+    }
+  </ul>

@@ -9,17 +9,16 @@
 
 body {
   font-family: 'Supreme', sans-serif;
-  margin: 0;
-  padding: 0;
   background: var(--color-bg);
-  color: #333;
+  color: var(--color-overlay);
 }
 
 header, footer {
   text-align: center;
   padding: 2rem 1rem;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: var(--color-bg);
+  
+  
 }
 
 .grid ul {
@@ -49,7 +48,7 @@ header, footer {
   border-radius: 12px;
   padding: 1rem;
   text-align: left;
-  color: black;
+  color: var(--color-overlay);
   height: 350px; 
   box-sizing: border-box; 
   overflow: hidden; 
